@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  width: 350px;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 15px;
+}
+
+fieldset {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+legend {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+label,
+select,
+input {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+}
+
+select,
+input {
+  border: 1px solid black;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  font-family: inherit;
+}
+
+input[type='color'] {
+  width: 50%;
+}
+
+button {
+  display: block;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  margin: 15px auto 0;
+  padding: 5px 20px;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 1.2em;
+}
+
+button:hover {
+  background-color: lightgray;
+}
+
+.read-only {
+  opacity: 0.5;
+}

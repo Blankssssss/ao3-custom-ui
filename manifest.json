@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "AO3 Custom UI",
+  "version": "1.0.0",
+  "description": "Change the UI of Archive of Our Own (AO3) without using a site skin.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://archiveofourown.org/*",
+        "https://archiveofourown.com/*",
+        "https://archiveofourown.net/*",
+        "https://ao3.org/*",
+        "https://insecure.ao3.org/*"
+      ],
+      "js": ["js/common.js", "js/content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AO3 Custom UI</title>
+    <link rel="stylesheet" type="text/css" href="css/popup.css" />
+  </head>
+
+  <body>
+    <h1>AO3 Custom UI</h1>
+    <form>
+      <fieldset>
+        <legend>Font</legend>
+
+        <label for="font-family">Family:</label>
+        <select id="font-family"></select>
+
+        <label for="font_size">Size (%):</label>
+        <input
+          type="number"
+          id="font-size"
+          value="100"
+          step="10"
+          min="50"
+          max="200"
+        />
+
+        <label for="width">Width (%):</label>
+        <input type="number" id="width" value="100" step="10" min="50" max="100" />
+
+        <label for="line-spacing">Line spacing:</label>
+        <input
+          type="number"
+          id="line-spacing"
+          value="1.5"
+          step="0.25"
+          min="1"
+          max="3"
+        />
+
+        <label for="indent">Indent:</label>
+        <input type="number" id="indent" value="0" step="1" min="0" max="5" />
+      </fieldset>
+      <fieldset>
+        <legend>Theme</legend>
+
+        <label for="theme">Theme:</label>
+        <select id="theme"></select>
+        
+        <div id="custom">
+          <label for="background">Background:</label>
+          <input type="color" id="background" />
+          <label for="text">Text:</label>
+          <input type="color" id="text" />
+        </div>
+      </fieldset>
+    </form>
+    <button id="reset">Reset</button>
+  </body>
+
+  <script src="js/common.js"></script>
+  <script src="js/popup.js"></script>
+</html>
