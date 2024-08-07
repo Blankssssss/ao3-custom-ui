@@ -14,7 +14,7 @@ const defaultSettings = {
       'Verdana',
     ],
     defaultFontFamily:
-      'Lucida Grande, Lucida Sans Unicode, Verdana, Helvetica, sans-serif, GNU Unifont',
+      "'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, sans-serif, 'GNU Unifont'",
     defaultHeadingFontFamily: 'Georgia, sans-serif',
     fontSize: '100',
     lineSpacing: '1.5',
@@ -39,11 +39,9 @@ function modifyHTML() {
     if (!work) return
 
     const headings = document.querySelectorAll('#workskin .heading')
-    const blockquotes = document.querySelectorAll(
-      'blockquote[class="userstuff"]'
-    )
-    const title = document.querySelector('h3[class="title"]')
-    const paragraphs = document.querySelectorAll('.userstuff p')
+    const blockquotes = document.querySelectorAll('#workskin blockquote')
+    const title = document.querySelector('h3.title')
+    const paragraphs = document.querySelectorAll('#workskin p')
     const links = document.querySelectorAll('#workskin a')
 
     applySettings()
@@ -88,12 +86,16 @@ function modifyHTML() {
         .slice(-2)
       work.style.setProperty('background', background)
       work.style.setProperty('color', text)
-      links.forEach((link) => {
-        link.style.setProperty(
-          'color',
-          settings.themeList.find((theme) => theme[0] === settings.theme)[2]
-        )
-      })
+
+      // Filter out edit button
+      Array.from(links)
+        .filter((link) => !link.closest('li'))
+        .forEach((link) => {
+          link.style.setProperty(
+            'color',
+            settings.themeList.find((theme) => theme[0] === settings.theme)[2]
+          )
+        })
     }
   })
 }
