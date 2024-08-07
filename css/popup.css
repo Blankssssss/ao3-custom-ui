@@ -47,13 +47,14 @@ input {
 
 input[type='color'] {
   width: 50%;
+  background-color: white;
 }
 
 button {
   display: block;
   border: 2px solid black;
   border-radius: 5px;
-  background-color: whitesmoke;
+  background-color: white;
   margin: 15px auto 0;
   padding: 5px 20px;
   font-weight: bold;
@@ -63,6 +64,7 @@ button {
 
 button:hover {
   background-color: lightgray;
+  cursor: pointer;
 }
 
 .read-only {

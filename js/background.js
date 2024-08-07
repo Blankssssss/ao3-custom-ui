@@ -1,4 +1,4 @@
-importScripts("common.js")
+importScripts('common.js')
 
 chrome.runtime.onInstalled.addListener(async () => {
   await chrome.storage.sync.set(defaultSettings)

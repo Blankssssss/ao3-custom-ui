@@ -35,6 +35,9 @@ function modifyHTML() {
   chrome.storage.sync.get('ao3CustomUI', (data) => {
     const settings = data.ao3CustomUI
     const work = document.getElementById('workskin')
+
+    if (!work) return
+
     const headings = document.querySelectorAll('#workskin .heading')
     const blockquotes = document.querySelectorAll(
       'blockquote[class="userstuff"]'
@@ -43,28 +46,41 @@ function modifyHTML() {
     const paragraphs = document.querySelectorAll('.userstuff p')
     const links = document.querySelectorAll('#workskin a')
 
-    if (work) {
+    applySettings()
+
+    function applySettings() {
       work.style.setProperty('box-sizing', 'border-box')
 
-      if (settings.fontfamily === 'Default') {
-        setFont(settings.defaultFontFamily)
-        setHeadingFont(settings.defaultHeadingFontFamily)
-      } else {
-        setFont(settings.fontfamily)
-        setHeadingFont(settings.fontfamily)
+      const font =
+        settings.fontfamily === 'Default'
+          ? settings.defaultFontFamily
+          : settings.fontfamily
+      work.style.setProperty('font-family', font)
+      blockquotes.forEach((blockquote) => {
+        blockquote.style.setProperty('font-family', font)
+      })
+      const headingFont =
+        settings.fontfamily === 'Default'
+          ? settings.defaultHeadingFontFamily
+          : settings.fontfamily
+      headings.forEach((heading) => {
+        heading.style.setProperty('font-family', headingFont)
+      })
+      if (title) {
+        title.style.setProperty('font-family', headingFont)
       }
 
       work.style.setProperty(
         'font-size',
-        ((Number(settings.fontSize) / 100) * 1.08).toString() + 'em'
+        `${(Number(settings.fontSize) / 100) * 1.08}em`
       )
+
+      work.style.setProperty('width', `${settings.width}%`)
 
       paragraphs.forEach((paragraph) => {
         paragraph.style.setProperty('line-height', settings.lineSpacing)
-        paragraph.style.setProperty('text-indent', settings.indent + 'em')
+        paragraph.style.setProperty('text-indent', `${settings.indent}em`)
       })
-
-      work.style.setProperty('width', settings.width + '%')
 
       work.style.setProperty('padding', '0 2%')
       const [background, text] = settings.themeList
@@ -73,24 +89,11 @@ function modifyHTML() {
       work.style.setProperty('background', background)
       work.style.setProperty('color', text)
       links.forEach((link) => {
-        link.style.setProperty('color', text)
+        link.style.setProperty(
+          'color',
+          settings.themeList.find((theme) => theme[0] === settings.theme)[2]
+        )
       })
-    }
-
-    function setFont(font) {
-      work.style.setProperty('font-family', font)
-      blockquotes.forEach((blockquote) => {
-        blockquote.style.setProperty('font-family', font)
-      })
-    }
-
-    function setHeadingFont(font) {
-      headings.forEach((heading) => {
-        heading.style.setProperty('font-family', font)
-      })
-      if (title) {
-        title.style.setProperty('font-family', font)
-      }
     }
   })
 }
