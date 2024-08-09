@@ -31,9 +31,9 @@ function fillDropdown(element, list) {
 }
 
 // Apply settings
-fontFamily.addEventListener('change', () => {
+fontFamily.addEventListener('change', () =>
   changeSettings('fontfamily', fontFamily.value)
-})
+)
 
 fontSize.addEventListener('input', () =>
   validateAndChangeSettings(fontSize, 'fontSize', 50, 200)
@@ -56,13 +56,11 @@ theme.addEventListener('change', () => {
   displayCustomColors(theme.value)
 })
 
-background.addEventListener('change', () => {
+background.addEventListener('change', () =>
   changeSettings('background', background.value)
-})
+)
 
-text.addEventListener('change', () => {
-  changeSettings('text', text.value)
-})
+text.addEventListener('change', () => changeSettings('text', text.value))
 
 reset.addEventListener('click', () => {
   applySettingsToPage(defaultSettings.ao3CustomUI)

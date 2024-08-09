@@ -54,16 +54,16 @@ function modifyHTML() {
           ? settings.defaultFontFamily
           : settings.fontfamily
       work.style.setProperty('font-family', font)
-      blockquotes.forEach((blockquote) => {
+      blockquotes.forEach((blockquote) =>
         blockquote.style.setProperty('font-family', font)
-      })
+      )
       const headingFont =
         settings.fontfamily === 'Default'
           ? settings.defaultHeadingFontFamily
           : settings.fontfamily
-      headings.forEach((heading) => {
+      headings.forEach((heading) =>
         heading.style.setProperty('font-family', headingFont)
-      })
+      )
       if (title) {
         title.style.setProperty('font-family', headingFont)
       }
